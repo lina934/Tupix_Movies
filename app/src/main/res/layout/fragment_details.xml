@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    android:background="#474545"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="50dp"
+        >
+
+
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="60dp"
+            android:clickable="true"
+            android:src="@drawable/icons8_x"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/icons8_share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        </LinearLayout>-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardimagedetails"
+            android:layout_width="160dp"
+            android:layout_height="250dp"
+            app:cardCornerRadius="16dp"
+            android:layout_marginTop="100dp"
+            app:layout_constraintBottom_toTopOf="@id/movienamedetaile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imagedetails"
+                android:layout_width="160dp"
+                android:layout_height="250dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/movienamedetaile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_black"
+            android:gravity="center"
+            android:text="An Echo in the Darkness"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardimagedetails" />
+
+        <TextView
+            android:id="@+id/writerdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_extralight"
+            android:gravity="center"
+            android:text="sassfcsdcfsdcsd"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movienamedetaile" />
+
+        <LinearLayout
+            android:id="@+id/rategroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/writerdetails">
+
+            <ImageView
+                android:id="@+id/imagerate"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/icons8_star" />
+
+            <TextView
+                android:id="@+id/ratedetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="4dp"
+                android:text="322" />
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratecount"
+                android:text=" 2132"
+                />
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ActionMenuView
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toStartOf="@id/prevaction"
+            app:layout_constraintTop_toBottomOf="@id/rategroup"
+            app:layout_constraintBottom_toTopOf="@id/youcan"
+            android:background="@drawable/shape_buttonlift"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+
+            >
+            <Button
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30$"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:backgroundTint="@color/white"
+                />
+        </ActionMenuView>
+
+        <ActionMenuView
+            android:id="@+id/prevaction"
+            android:layout_width="160dp"
+            app:layout_constraintBottom_toTopOf="@id/youcan"
+            app:layout_constraintStart_toEndOf="@id/prevaction"
+            app:layout_constraintTop_toBottomOf="@id/rategroup"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+
+            android:background="@drawable/shapebutton_right"
+            >
+
+            <Button
+                android:id="@+id/prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preview"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:backgroundTint="#EC9580"
+                />
+        </ActionMenuView>
+
+
+        <TextView
+            android:id="@+id/youcan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/cairo_medium"
+            android:text="You can also like"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/prevaction" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCustom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/youcan"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="42dp"
+            tools:listitem="@layout/list_tupix_item_row"/>
+        <ProgressBar
+            android:id="@+id/paginationProgressBar"
+            style="?attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/iconfav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:tint="@android:color/white"
+            app:backgroundTint="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerCustom"
+
+            app:srcCompat="@drawable/heart_white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
