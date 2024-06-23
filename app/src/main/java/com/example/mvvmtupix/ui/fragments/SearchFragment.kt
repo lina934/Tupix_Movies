@@ -13,12 +13,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.mvvmtupix.databinding.FragmentSearchBinding
 import com.example.mvvmtupix.repose.Tupix_Repositry
 import com.example.mvvmtupix.viewmodel.SearchFragmentViewModelProviderFactory
-import com.example.tupix.TupixAdapterClm
-import com.example.tupix.api.Movie
+import com.example.mvvmtupix.adapters.TupixAdapterClm
+import com.example.mvvmtupix.data.local.TupixDatabase
+import com.example.mvvmtupix.model.Movie
 
 class SearchFragment : Fragment() {
     lateinit var binding: FragmentSearchBinding
-   private lateinit var viewModel: SearchFragmentViewModel
+    private lateinit var viewModel: SearchFragmentViewModel
     val database by lazy { TupixDatabase.getAppDataBase(requireContext()) }
     val repo by lazy {Tupix_Repositry(database.movieDao())}
     override fun onCreateView(
@@ -26,13 +27,14 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val searchFragmentViewModelProviderFactory = SearchFragmentViewModelProviderFactory(repo)
+
 
 
         binding.searchIcon.setOnClickListener {
             if (binding.searchedittext.text.isEmpty()) {
                 Toast.makeText(context, "fill it please", Toast.LENGTH_SHORT).show()
             } else {
+                val searchFragmentViewModelProviderFactory = SearchFragmentViewModelProviderFactory(repo)
                 viewModel = ViewModelProvider(
                     this,
                     searchFragmentViewModelProviderFactory

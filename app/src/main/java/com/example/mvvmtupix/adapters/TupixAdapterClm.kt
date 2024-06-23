@@ -1,4 +1,4 @@
-package com.example.tupix
+package com.example.mvvmtupix.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmtupix.databinding.ListTupixItemClmBinding
 import com.squareup.picasso.Picasso
-import com.example.tupix.api.Movie
+import com.example.mvvmtupix.model.Movie
 
-class TupixAdapterClm (
+class TupixAdapterClm(
     var context: Context,
     var onItemClick: ((Movie) -> Unit),
     var moviesList: List<Movie>
@@ -32,16 +32,13 @@ class TupixAdapterClm (
 
         holder.binding.titlemovie.text = currentMovie.title
         holder.binding.rate.text = currentMovie.vote_average.toString()
-        Picasso.with(context).load("https://image.tmdb.org/t/p/w500/" + currentMovie.poster_path).into(holder.binding.imagedown)
-holder.binding.ratecount.text = "(" +currentMovie.vote_count.toString()+ ")"
+        Picasso.with(context).load("https://image.tmdb.org/t/p/w500/" + currentMovie.poster_path)
+            .into(holder.binding.imagedown)
+        holder.binding.ratecount.text = "(" + currentMovie.vote_count.toString() + ")"
         holder.binding.carddown.setOnClickListener {
             onItemClick.invoke(currentMovie)
         }
     }
-
-
-
-
 
 
 }

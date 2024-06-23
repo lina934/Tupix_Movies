@@ -12,14 +12,15 @@ import com.example.mvvmtupix.databinding.FragmentMoviesBinding
 import com.example.mvvmtupix.repose.Tupix_Repositry
 import com.example.mvvmtupix.viewmodel.MoviesFragmentViewModel
 import com.example.mvvmtupix.viewmodel.MoviesFragmentViewModelProviderFactory
-import com.example.tupix.TupixAdapter
-import com.example.tupix.TupixAdapterClm
-import com.example.tupix.api.Movie
+import com.example.mvvmtupix.adapters.TupixAdapter
+import com.example.mvvmtupix.adapters.TupixAdapterClm
+import com.example.mvvmtupix.data.local.TupixDatabase
+import com.example.mvvmtupix.model.Movie
 
 
 class MoviesFragment : Fragment() {
-lateinit var binding: FragmentMoviesBinding
-lateinit var viewModel: MoviesFragmentViewModel
+    lateinit var binding: FragmentMoviesBinding
+    lateinit var viewModel: MoviesFragmentViewModel
     val database by lazy { TupixDatabase.getAppDataBase(requireContext()) }
     val repo by lazy {Tupix_Repositry(database.movieDao())}
 
@@ -44,14 +45,14 @@ lateinit var viewModel: MoviesFragmentViewModel
     }
     fun setUpMovies(){
         viewModel.tupixMoviesUp.observe(viewLifecycleOwner, Observer {
-           binding.recyclerHorizontal.apply {
-               adapter = TupixAdapter(context,
-                   onItemClick = {
-                       val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(it)
-                       findNavController().navigate(action)
-                   }
-               ,it.movies as ArrayList<Movie>)
-           }
+            binding.recyclerHorizontal.apply {
+                adapter = TupixAdapter(context,
+                    onItemClick = {
+                        val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(it)
+                        findNavController().navigate(action)
+                    }
+                    ,it.movies as ArrayList<Movie>)
+            }
         })
     }
     fun setDownMovies(){
@@ -71,9 +72,9 @@ lateinit var viewModel: MoviesFragmentViewModel
         }
     }
 
-fun searchClick(){
-    binding.searchicon.setOnClickListener {
-val action = MoviesFragmentDirections.actionMoviesFragmentToSearchFragment()
-    findNavController().navigate(action)}
-}
+    fun searchClick(){
+        binding.searchicon.setOnClickListener {
+            val action = MoviesFragmentDirections.actionMoviesFragmentToSearchFragment()
+            findNavController().navigate(action)}
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.tupix.api
+package com.example.mvvmtupix.model
 
 data class Crew(
     val adult: Boolean,

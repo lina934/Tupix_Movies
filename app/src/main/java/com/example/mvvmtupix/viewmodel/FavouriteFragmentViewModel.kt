@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mvvmtupix.repose.Tupix_Repositry
-import com.example.tupix.api.Movie
+import com.example.mvvmtupix.model.Movie
 import kotlinx.coroutines.launch
 
 class FavouriteFragmentViewModel(val repo : Tupix_Repositry):ViewModel(){

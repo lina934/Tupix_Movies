@@ -1,4 +1,4 @@
-package com.example.tupix.api
+package com.example.mvvmtupix.model
 
 data class Cast(
     val adult: Boolean,

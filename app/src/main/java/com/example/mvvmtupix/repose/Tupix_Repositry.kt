@@ -2,9 +2,9 @@ package com.example.mvvmtupix.repose
 
 import com.example.mvvmtupix.data.api.RetrofitInstanse
 import com.example.mvvmtupix.data.local.TupixDao
-import com.example.tupix.api.Movie
-import com.example.tupix.api.Tuoix_Details_Response
-import com.example.tupix.api.TupixResponse
+import com.example.mvvmtupix.model.Movie
+import com.example.mvvmtupix.model.TupixDetailsResponse
+import com.example.mvvmtupix.model.TupixResponse
 import retrofit2.Response
 
 class Tupix_Repositry(private val dao : TupixDao) {
@@ -20,7 +20,7 @@ class Tupix_Repositry(private val dao : TupixDao) {
         return RetrofitInstanse.api.getnewmovies(api,page)
     }
 
-    suspend fun getCustomMovies(id: Int, api: String):Response<Tuoix_Details_Response>{
+    suspend fun getCustomMovies(id: Int, api: String):Response<TupixDetailsResponse>{
         return RetrofitInstanse.api.getCustomList(id,api)
     }
 
@@ -39,6 +39,7 @@ class Tupix_Repositry(private val dao : TupixDao) {
     suspend fun isExisted(movie_id : Int):Boolean{
         return dao.isExisted(movie_id)
     }
+
 
     suspend fun deleteMovies(movie_id: Int){
         dao.deleteMovies(movie_id)

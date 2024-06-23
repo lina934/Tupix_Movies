@@ -6,16 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.findFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.mvvmtupix.R
+import androidx.navigation.fragment.findNavController
 import com.example.mvvmtupix.databinding.FragmentFavouriteBinding
 import com.example.mvvmtupix.repose.Tupix_Repositry
 import com.example.mvvmtupix.viewmodel.FavouriteFragmentViewModel
 import com.example.mvvmtupix.viewmodel.FavouriteFragmentViewModelProviderFactory
-import com.example.mvvmtupix.viewmodel.MoviesFragmentViewModel
-import com.example.mvvmtupix.viewmodel.MoviesFragmentViewModelProviderFactory
-import com.example.tupix.TupixAdapterClm
+import com.example.mvvmtupix.adapters.TupixAdapterClm
+import com.example.mvvmtupix.data.local.TupixDatabase
 
 class FavouriteFragment : Fragment() {
     private lateinit var binding: FragmentFavouriteBinding
@@ -33,8 +33,14 @@ class FavouriteFragment : Fragment() {
             favouriteFragmentViewModelProviderFactory
         )[FavouriteFragmentViewModel::class.java]
         // Inflate the layout for this fragment
+
         viewModel.getFavMovies()
         subScribeFav()
+
+        binding.backe.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         return binding.root
     }
 
@@ -42,8 +48,10 @@ class FavouriteFragment : Fragment() {
         viewModel.favMovies.observe(viewLifecycleOwner, Observer { movieList ->
             Log.e("testFAV", movieList.toString())
             binding.favoritesRecycler.apply {
-                adapter = TupixAdapterClm(requireContext(), {
-                    Log.d("FavouriteFragment", "Clicked on: ${it.title}")
+                adapter = TupixAdapterClm(requireContext(), {movie->
+                    Log.d("FavouriteFragment", "Clicked on: ${movie.title}")
+                    val action = FavouriteFragmentDirections.actionFavouriteFragmentToDetailsFragment(movie)
+                    findNavController().navigate(action)
 
                 }, movieList)
             }

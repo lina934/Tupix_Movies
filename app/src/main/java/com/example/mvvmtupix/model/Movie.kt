@@ -1,4 +1,4 @@
-package com.example.tupix.api
+package com.example.mvvmtupix.model
 
 import android.os.Parcelable
 import androidx.room.Entity

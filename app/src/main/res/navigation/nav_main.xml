@@ -30,7 +30,7 @@
             app:destination="@id/moviesFragment" />
         <argument
             android:name="args_details"
-            app:argType="com.example.tupix.api.Movie" />
+            app:argType="com.example.mvvmtupix.model.Movie" />
 
     </fragment>
     <fragment

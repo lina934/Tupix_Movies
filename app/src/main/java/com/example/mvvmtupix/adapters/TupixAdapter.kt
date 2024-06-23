@@ -1,4 +1,4 @@
-package com.example.tupix
+package com.example.mvvmtupix.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmtupix.databinding.ListTupixItemRowBinding
 import com.squareup.picasso.Picasso
-import com.example.tupix.api.Movie
+import com.example.mvvmtupix.model.Movie
 
 
 class TupixAdapter (
@@ -32,8 +32,8 @@ class TupixAdapter (
 
         Picasso.with(context).load("https://image.tmdb.org/t/p/w500/" +currentMovieup.poster_path).into(holder.binding.imageup)
 
-holder.binding.cardup.setOnClickListener{
-    onItemClick.invoke(currentMovieup)
-}
+        holder.binding.cardup.setOnClickListener{
+            onItemClick.invoke(currentMovieup)
+        }
     }
 }
